@@ -66,7 +66,7 @@ func MakeHomeBlocks(articles []Article, isLogin bool) template.HTML {
 		}
 		htmlHome += buffer.String()
 	}
-	fmt.Println("htmlHome-->", htmlHome)
+	//fmt.Println("htmlHome-->", htmlHome)
 	return template.HTML(htmlHome)
 }
 

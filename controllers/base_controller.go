@@ -21,7 +21,6 @@ func (this *BaseController) Prepare() {
 	} else {
 		this.IsLogin = false
 	}
-	fmt.Println(this.Data["json"])
 	this.Data["IsLogin"] = this.IsLogin
 
 }

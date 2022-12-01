@@ -27,3 +27,6 @@ func insertArticle(article Article) (int64, error) {
 	return utils.ModifyDB("insert into article(title,tags,short,content,author,createtime) values(?,?,?,?,?,?)",
 		article.Title, article.Tags, article.Short, article.Content, article.Author, article.Createtime)
 }
+func DeleteArticle(id int) (int64, error) {
+	return utils.ModifyDB("DELETE FROM article WHERE (id = ?)", id)
+}
