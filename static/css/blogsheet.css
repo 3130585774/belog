@@ -19,7 +19,7 @@ a:hover {
 }
 
 body {
-    margin: 0px;
+    margin: 0;
 }
 
 
@@ -33,9 +33,9 @@ body {
     justify-content: space-between;
     background-color: #72BCB5;
     position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 #nav li {
@@ -44,7 +44,7 @@ body {
 }
 
 #nav ul {
-    padding: 0px;
+    padding: 0;
 }
 
 #nav a {
@@ -68,7 +68,7 @@ body {
 }
 
 #home-block-item > p {
-    margin: 5px 0px;
+    margin: 5px 0;
 }
 
 .home-block-item-udpate {
@@ -87,7 +87,7 @@ body {
 /*首页 footer-------------------------------------------------------------------------------------------------------*/
 #home-footer {
     text-align: center;
-    margin: 50px 0px 80px 0px;
+    margin: 50px 0 80px 0;
 }
 
 .disable {
@@ -111,14 +111,32 @@ body {
     height: 400px;
 }
 
-#write-art-form > div {
-    margin: 10px 0px;
+#edit-art-form > div {
+    margin: 10px 0;
+}
+
+/*编辑文章-------------------------------------------------------------------------------------------------------*/
+#edit-art-form {
+}
+
+#edit-art-form > input, #write-art-form > textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+#edit-art-form > textarea {
+    display: inline-block;
+}
+
+
+#edit-art-form > div {
+    margin: 10px 0;
 }
 
 /*标签列表------------------------------------------------------------------------------------------------------*/
 
 #tags-list > div {
-    margin: 10px 0px;
+    margin: 10px 0;
 }
 
 #tags-list a {
@@ -128,10 +146,10 @@ body {
 /*相册------------------------------------------------------------------------------------------------------*/
 
 #album-box {
-    margin: 0px auto;
+    margin: 0 auto;
     width: 844px;
     height: 1000px;
-    font-size: 0px;
+    font-size: 0;
 }
 
 .album-item {
@@ -149,7 +167,7 @@ body {
     margin: 60px auto;
     width: 900px;
     height: 640px;
-    font-size: 0px;
+    font-size: 0;
     /*position: relative;*/
 }
 

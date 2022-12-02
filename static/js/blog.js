@@ -38,9 +38,9 @@ $(document).ready(function () {
                 url: urlStr,
                 type: "post",
                 dataType: "json",
-                success: function (data, status) {
+                success: function (data) {
                     alert("data:" + data.message)
-                    if (data.code == 1) {
+                    if (data.code === 1) {
                         setTimeout(function () {
                             window.location.href = "/login"
                         }, 1000)
@@ -85,7 +85,7 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (data, status) {
                     alert("data:" + data.message + ":" + status)
-                    if (data.code == 1) {
+                    if (data.code === 1) {
                         setTimeout(function () {
                             window.location.href = "/"
                         }, 1000)
@@ -130,7 +130,51 @@ $(document).ready(function () {
                 url: urlStr,
                 type: "post",
                 dataType: "json",
-                success: function (data, status) {
+                success: function (data) {
+                    alert(":data:" + data.message);
+                    setTimeout(function () {
+                        window.location.href = "/"
+                    }, 1000)
+                },
+                error: function (data, status) {
+                    alert("err:" + data.message + ":" + status)
+                }
+            });
+        }
+    })
+    $("#edit-art-form").validate({
+        rules: {
+            title: "required",
+            tags: "required",
+            short: {
+                required: true,
+                minlength: 2
+            },
+            content: {
+                required: true,
+                minlength: 2
+            }
+        },
+        messages: {
+            title: "请输入标题",
+            tags: "请输入标签",
+            short: {
+                required: "请输入简介",
+                minlength: "简介内容最少两个字符"
+            },
+            content: {
+                required: "请输入文章内容",
+                minlength: "文章内容最少两个字符"
+            }
+        },
+        submitHandler: function (form) {
+            var urlStr = "/article/update";
+            alert("urlStr:" + urlStr);
+            $(form).ajaxSubmit({
+                url: urlStr,
+                type: "post",
+                dataType: "json",
+                success: function (data) {
                     alert(":data:" + data.message);
                     setTimeout(function () {
                         window.location.href = "/"
