@@ -11,10 +11,10 @@ type DetelArticlerController struct {
 }
 
 func (c *DetelArticlerController) Get() {
-	artic_id, _ := c.GetInt("id")
-	fmt.Println(artic_id)
+	articId, _ := c.GetInt("id")
+	fmt.Println(articId)
 	fmt.Println()
-	_, err := models.DeleteArticle(artic_id)
+	_, err := models.DeleteArticle(articId)
 	if err != nil {
 		return
 	}
