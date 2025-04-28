@@ -1,17 +1,12 @@
 package utils
 
 import (
-	"bytes"
 	"crypto/md5"
 	"database/sql"
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
 	"github.com/astaxie/beego"
 	//切记：导入驱动包
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/russross/blackfriday"
-	"github.com/sourcegraph/syntaxhighlight"
-	"html/template"
 	"log"
 )
 
@@ -92,37 +87,16 @@ func CreateTableWithArticle() {
 		content longtext,
 		createtime int(10)
 		);`
-	ModifyDB(s)
+	_, err := ModifyDB(s)
+	if err != nil {
+		return
+	}
 }
 func QueryDB(sql string) (*sql.Rows, error) {
 	return db.Query(sql)
 }
 
-/**
- * 将文章详情的内容，转换成HTMl语句
- */
-func SwitchMarkdownToHtml(content string) template.HTML {
-
-	markdown := blackfriday.MarkdownCommon([]byte(content))
-
-	//获取到html文档
-	doc, _ := goquery.NewDocumentFromReader(bytes.NewReader(markdown))
-
-	/**
-	对document进程查询，选择器和css的语法一样
-	第一个参数：i是查询到的第几个元素
-	第二个参数：selection就是查询到的元素
-	*/
-	doc.Find("code").Each(func(i int, selection *goquery.Selection) {
-		light, _ := syntaxhighlight.AsHTML([]byte(selection.Text()))
-		selection.SetHtml(string(light))
-		fmt.Println(selection.Html())
-		fmt.Println("light:", string(light))
-		fmt.Println("\n\n\n")
-	})
-	htmlString, _ := doc.Html()
-	return template.HTML(htmlString)
-}
+// SwitchMarkdownToHtml /**
 func MD5(str string) string {
 	md5str := fmt.Sprintf("%x", md5.Sum([]byte(str)))
 	return md5str

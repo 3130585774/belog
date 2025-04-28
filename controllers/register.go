@@ -16,7 +16,7 @@ func (this *RegisterController) Get() {
 	this.TplName = "register.gohtml"
 }
 
-//处理注册
+// Post 处理注册
 func (this *RegisterController) Post() {
 	//获取表单信息
 	username := this.GetString("username")
@@ -38,7 +38,7 @@ func (this *RegisterController) Post() {
 	password = utils.MD5(password)
 	fmt.Println("md5后：", password)
 
-	user := models.User{0, username, password, 0, time.Now().Unix()}
+	user := models.User{Username: username, Password: password, Createtime: time.Now().Unix()}
 	_, err := models.InsertUser(user)
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{"code": 0, "message": "注册失败"}

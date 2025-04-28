@@ -10,16 +10,16 @@ type HomeController struct {
 	BaseController
 }
 
-func (this *HomeController) Get() {
-	page, _ := this.GetInt("page")
+func (c *HomeController) Get() {
+	page, _ := c.GetInt("page")
 	if page <= 0 {
 		page = 1
 	}
 	var artList []models.Article
 	artList, _ = models.FindArticleWithPage(page)
-	this.Data["PageCode"] = 1
-	this.Data["HasFooter"] = true
-	fmt.Println("IsLogin:", this.IsLogin, this.Loginuser)
-	this.Data["Content"] = models.MakeHomeBlocks(artList, this.IsLogin)
-	this.TplName = "home.gohtml"
+	c.Data["PageCode"] = 1
+	c.Data["HasFooter"] = true
+	fmt.Println("IsLogin:", c.IsLogin, c.Loginuser)
+	c.Data["Content"] = models.MakeHomeBlocks(artList, c.IsLogin)
+	c.TplName = "home.gohtml"
 }

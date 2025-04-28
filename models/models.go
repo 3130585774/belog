@@ -34,13 +34,13 @@ func QueryUserWightCon(con string) int {
 	return id
 }
 
-//根据用户名查询id
+// QueryUserWithUsername QueryUserWithUsername 根据用户名查询id
 func QueryUserWithUsername(username string) int {
 	sql := fmt.Sprintf("where username='%s'", username)
 	return QueryUserWightCon(sql)
 }
 
-//根据用户名和密码，查询id
+// QueryUserWithParam QueryUserWithParam 根据用户名和密码，查询id
 func QueryUserWithParam(username, password string) int {
 	sql := fmt.Sprintf("where username='%s' and password='%s'", username, password)
 	return QueryUserWightCon(sql)
